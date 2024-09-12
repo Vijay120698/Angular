@@ -1,0 +1,87 @@
+<div class="container">
+    <h2 class="mb-4 text-center">𝙿𝚛𝚘𝚍𝚞𝚌𝚝 𝚏𝚘𝚛𝚖</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Product Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="name" required class="form-control"/>
+      </div>
+ 
+      <div class="form-group">
+        <label for="color">Color:</label>
+        <input
+          type="text"
+          id="color"
+          name="color"
+          [(ngModel)]="color"
+          required
+          class="form-control"
+        />
+      </div>
+ 
+      <div class="form-group"> 
+        <label for="capacity">Capacity:</label>
+        <input
+          type="text"
+          id="capacity"
+          name="capacity"
+          [(ngModel)]="capacity"
+          required
+          class="form-control"
+        />
+      </div>
+ 
+      <div class="form-group">
+        <label for="price">Price (optional):</label>
+        <input
+          type="number"
+          id="price"
+          name="price"
+          [(ngModel)]="price"
+          class="form-control"
+        />
+      </div>
+ 
+      <div class="form-group">
+        <label for="screenSize">Screen Size (optional):</label>
+        <input
+          type="number"
+          id="screenSize"
+          name="screenSize"
+          [(ngModel)]="screenSize"
+          class="form-control"
+        />
+      </div>
+ 
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+      
+    </form>
+    
+   
+    <div *ngIf="products.length > 0">  
+      <h2>Products:</h2>
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Name</th>
+            <th>Color</th>
+            <th>Capacity</th>
+            <th>Price</th>
+            <th>Screen Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td><strong>{{ product.name }}</strong></td>
+            <td>{{ product.data.color }}</td>
+            <td>{{ product.data.capacity }}</td>
+            <td>{{ product.data.price || 'N/A' }}</td>
+            <td>{{ product.data.screenSize || 'N/A' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <app-list></app-list>
+     <!-- <button class="btn btn-danger" [routerLink]="['/list']">Go to list</button>  -->
+  </div>
+  <!-- Your existing form and other HTML -->
